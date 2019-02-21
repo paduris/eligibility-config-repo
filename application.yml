@@ -27,6 +27,10 @@ eureka:
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 5
     preferIpAddress: true
+    metadataMap:
+      hostname: ${vcap.application.application_uris[0]}
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${random.value:0000}}}
+
   client:
     registerWithEureka: true
     fetchRegistry: true
